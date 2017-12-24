@@ -1,5 +1,3 @@
-package homework;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +14,12 @@ public class Time {
     
   }
 
+  public static void getDate(){
+    Date date = new Date();
+    SimpleDateFormat fmt = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a");
+    System.out.println("The time now is : " + fmt.format(date));
+  }
+  
   public boolean checkTime(String date) throws ParseException {
     Date date1 = nowdate.parse(sdate);
     Date date2 = nowdate.parse(date);
