@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
@@ -9,8 +10,8 @@ public class Mainhw {
 
     Time time = new Time();
     Record record = new Record();
-    
-    
+
+
     boolean test = true;
     while (test) {
       System.out.println("1.Add homework.");
@@ -18,7 +19,7 @@ public class Mainhw {
       System.out.println("3.View homework.");
       System.out.println("Exit. Any key.");
       int choose = scanner.nextInt();
-      
+
       switch (choose) {
         case 1 :
           scanner.nextLine();
@@ -26,7 +27,7 @@ public class Mainhw {
           String name = scanner.nextLine();
           System.out.println("Input homework information.");
           String note = scanner.nextLine();
-    
+
           while (true) {
             System.out.println("Input time limit.(yyyy-MM-dd)");
             String date = scanner.nextLine();
