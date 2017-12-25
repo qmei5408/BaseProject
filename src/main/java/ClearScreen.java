@@ -6,8 +6,6 @@ public class ClearScreen {
      * lol only prints new lines ahaha :)
      */
     public static void clear (){
-        for (int i = 0; i < 50; i++){
-            System.out.println();
-        }
+            System.out.println("\n");
     }
 }

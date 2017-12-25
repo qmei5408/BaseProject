@@ -1,7 +1,5 @@
 
 import java.io.*;
-import java.util.Scanner;
-
 
 public class Database {
     /**
@@ -36,14 +34,19 @@ public class Database {
 
     // Writing to Database.txt
     //Mostly the same as the read method
-    public void WriteFile(String actName) {
+    public void WriteFile(String actName, String temp) {
         try {
 
             FileWriter write = new FileWriter(fileName, true);// true is added here because we want to append
+            FileWriter writeTemp = new FileWriter("temp.txt", true);
             BufferedWriter buffW = new BufferedWriter(write);          // the file
+            BufferedWriter buffTemp = new BufferedWriter(writeTemp);
             buffW.write(actName);//Write name of activity
+            buffTemp.write(temp);
             buffW.newLine();// go to new line
+            buffTemp.newLine();
             buffW.close();
+            buffTemp.close();
             System.out.println("Write Successful");// just so we know information was added successfully
             //Error handling
         } catch (IOException ex) {
@@ -53,19 +56,86 @@ public class Database {
     }
     // Method to check if activity with the same time already exists
     // **!!currently buggy always gives true, need to check!!**
-    public boolean CheckFile(String actName, String sTime) {
-
-
-        boolean success = true;
-        Scanner check = new Scanner(fileName);// set Scanner to read from Database.txt
-        while (check.hasNextLine()) {// while we are not at the end of the file do comparison
-            fromFile = check.nextLine();// get net line in file
-            if (fromFile.contains(actName) || fromFile.contains(sTime)) {
-                success = false;
+    public void CheckFile (String sTime) {
+        String checking = "";
+        Time see = new Time();
+        try {
+            FileReader read = new FileReader("temp.txt");// create new file reader
+            BufferedReader buffR = new BufferedReader(read);// place the file reader in a buffered reader
+            while ((checking = buffR.readLine()) != null) {// while not eof "end of file"
+                if (checking == null)
+                    continue;
+                try {
+                    see.errorCheckingDateUsed(sTime,checking);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            else
-                success = true;
+            buffR.close(); // close the buffered reader
+            //Error handling
+        } catch (FileNotFoundException ex) {
+            System.out.println("Failed to open temp.txt");
+        } catch (IOException ex) {
+            System.out.println("Unable to read file temp.txt");
+            ex.printStackTrace(); // we could just use this to show errors
         }
-        return success;
+
     }
+    //Deletes any Activity along with its time from Database.txt
+    public void delete(String actName){
+        String toDelete;
+        try {
+            File file = new File(fileName);
+            if (!file.isFile()) {//error handling
+                System.out.println("Not a file");
+                return;
+            }
+            File temp = new File(file.getAbsolutePath() + ".tmp");// creates a temporary file, all info from
+                                                                            //Database.txt will be stored here
+            FileReader read = new FileReader(fileName);
+            BufferedReader buff = new BufferedReader(read);
+            PrintWriter print = new PrintWriter(new FileWriter(temp));
+            while ((toDelete = buff.readLine()) != null) {// while not at end of file
+                if (!toDelete.trim().startsWith(actName)) {//check for activity number
+                    print.println(toDelete);
+                    print.flush();
+                }
+            }
+            buff.close();
+            print.close();
+            if (!file.delete()) {
+                System.out.println("Unable to delete file");
+            }
+            if (!temp.renameTo(file)) {
+                System.out.println("Could not rename file");
+            }
+        }
+            catch(FileNotFoundException ex){
+                ex.printStackTrace();
+            }
+            catch (IOException ex){
+                ex.printStackTrace();
+            }
+            System.out.println("Deleted Successfully");
+        }
+
+        public int line(){
+            int lines=0;
+
+            try {
+                FileReader read = new FileReader(fileName);// create new file reader
+                BufferedReader buffR = new BufferedReader(read);// place the file reader in a buffered reader
+                while ((line = buffR.readLine()) != null) {// while not eof "end of file"
+                    lines++;
+                }
+                buffR.close(); // close the buffered reader
+                //Error handling
+            } catch (FileNotFoundException ex) {
+                System.out.println("Failed to open " + fileName);
+            } catch (IOException ex) {
+                System.out.println("Unable to read file " + fileName);
+                ex.printStackTrace(); // we could just use this to show errors
+            }
+            return lines;
+        }
 }

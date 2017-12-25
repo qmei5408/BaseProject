@@ -13,8 +13,8 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        int ans;
+        Scanner scan = new Scanner(System.in);// Get input from the user
+        int ans;// variable to store the users response
         Activities add = new Activities("");//create new object add
         Activities delete = new Activities("");//create new object delete
         Activities view = new Activities("");//create new object view
@@ -36,8 +36,9 @@ public class Main {
                 break;
             case 2:// deletes an activity
                 ClearScreen.clear();
-                System.out.println("Deleting an activity");
-                System.out.println("What Activity would you like to delete?");
+                System.out.println("Deleting an activity\n Select an activity from below\n");
+                Activities.view();
+                System.out.println("What Activity would you like to delete? Select by entering activity number");
                 Scanner delAct = new Scanner(System.in);
                 String actName = delAct.nextLine();
                 Activities.delete(actName);
