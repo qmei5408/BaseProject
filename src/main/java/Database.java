@@ -42,11 +42,15 @@ public class Database {
             BufferedWriter buffW = new BufferedWriter(write);          // the file
             BufferedWriter buffTemp = new BufferedWriter(writeTemp);
             buffW.write(actName);//Write name of activity
-            buffTemp.write(temp);
+            if (temp != null) {
+                buffTemp.write(temp);
+                buffTemp.newLine();
+                buffTemp.close();
+            }
             buffW.newLine();// go to new line
-            buffTemp.newLine();
+
             buffW.close();
-            buffTemp.close();
+
             System.out.println("Write Successful");// just so we know information was added successfully
             //Error handling
         } catch (IOException ex) {
@@ -54,8 +58,8 @@ public class Database {
             ex.printStackTrace();
         }
     }
+
     // Method to check if activity with the same time already exists
-    // **!!currently buggy always gives true, need to check!!**
     public void CheckFile (String sTime) {
         String checking = "";
         Time see = new Time();
@@ -63,10 +67,11 @@ public class Database {
             FileReader read = new FileReader("temp.txt");// create new file reader
             BufferedReader buffR = new BufferedReader(read);// place the file reader in a buffered reader
             while ((checking = buffR.readLine()) != null) {// while not eof "end of file"
-                if (checking == null)
-                    continue;
                 try {
-                    see.errorCheckingDateUsed(sTime,checking);
+                    if (see.errorCheckingDateUsed(sTime,checking)){
+                        System.out.println("There is already an activity for this date and time\n try again!");
+                        System.exit(1);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -81,6 +86,7 @@ public class Database {
         }
 
     }
+
     //Deletes any Activity along with its time from Database.txt
     public void delete(String actName){
         String toDelete;
