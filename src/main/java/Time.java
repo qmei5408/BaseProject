@@ -1,6 +1,6 @@
 
 
-import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -48,6 +48,52 @@ public class Time {
             status = false;
             return status;
         }
+    }
+    
+    public boolean checkTime(String date) throws ParseException {
+      SimpleDateFormat datenow = new java.text.SimpleDateFormat("yyyy-MM-dd");
+      datenow.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      String sdate = datenow.format(new java.util.Date());
+      
+      Date date1 = datenow.parse(sdate);
+      Date date2 = datenow.parse(date);
+      
+      if (date1.compareTo(date2) != 1) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    public boolean timeComing(String date) throws ParseException {
+      SimpleDateFormat datenow = new java.text.SimpleDateFormat("yyyy-MM-dd");
+      datenow.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      String sdate = datenow.format(new java.util.Date());
+      
+      Date date1 = datenow.parse(sdate);
+      Date date2 = datenow.parse(date);
+      
+      long day = (date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000); 
+      if (day <= 3) {
+        return true;
+      }
+      
+      return false;
+    }
+    
+    public boolean timeDele(String time1, String time2) throws ParseException {
+      SimpleDateFormat datenow = new java.text.SimpleDateFormat("yyyy-MM-dd");
+      datenow.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      
+      Date date1 = datenow.parse(time1);
+      Date date2 = datenow.parse(time2);
+      
+      long day = (date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000); 
+      if (day == 0) {
+        return true;
+      }
+      
+      return false;
     }
 }
 

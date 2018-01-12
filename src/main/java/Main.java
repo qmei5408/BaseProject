@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +14,8 @@ public class Main {
         int in = input.nextInt();
         switch (in){
             case 1:
-                //武漢
+                Mainhw hwmenu = new Mainhw();
+                hwmenu.homeworkMenu();
                 break;
             case 2:
                 ActivityMenu menu = new ActivityMenu();
@@ -31,5 +31,6 @@ public class Main {
                     System.out.println("Exiting Program");
                     break;
         }
+        input.close();
     }
 }

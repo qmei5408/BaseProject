@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,28 +10,28 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class Record {
-
+  
   private String filename = "Homework.txt";
 
-  public void add(String name, String date, String note) throws IOException {
+  public void add(String name, String date, String note) throws IOException{
     FileWriter fw = new FileWriter(filename,true);
-
+    
     fw.write(date + "\r\n");
     fw.flush();
     fw.write(name + "\r\n");
     fw.flush();
     fw.write(note + "\r\n");
     fw.flush();
-
+    
     fw.close();
   }
-
+  
 
   public void read(int input) throws IOException, ParseException {
     FileReader fr = new FileReader(filename);
     BufferedReader br = new BufferedReader(fr);
     Time time = new Time();
-
+    
     if (input == 1) {
       while (br.ready()) {
         System.out.println(br.readLine());
@@ -48,31 +47,31 @@ public class Record {
           br.readLine();
           br.readLine();
         }
-
-
+        
+        
       }
     }
-
+   
     fr.close();
   }
-
+  
 
   public void del() throws IOException, ParseException {
     FileReader fr1 = new FileReader(filename);
     FileWriter fw1 = new FileWriter("test.txt");
-
+    
     BufferedReader br1 = new BufferedReader(fr1);
     Time time = new Time();
     Scanner scanner = new Scanner(System.in);
-
+    
     System.out.println("Input name");
     String name = scanner.nextLine();
-
+    
     System.out.println("Input date(yyyy-MM-dd)");
     String date = scanner.nextLine();
-
+    
     boolean check = false;
-
+    
     while (br1.ready()) {
       String recdate = br1.readLine();
       String recname = br1.readLine();
@@ -91,24 +90,24 @@ public class Record {
         fw1.flush();
       }
     }
-
+    
     if (check) {
       copyFile("test.txt","Homework.txt");
       System.out.println("Done delete");
     } else {
       System.out.println("No this data");
     }
-
-
+    
+    
     fw1.close();
     fr1.close();
     scanner.close();
   }
-
+  
 
   public static void copyFile(String string, String string2) throws IOException {
     InputStream fis = null;
-    OutputStream fos = null;
+    OutputStream fos = null;    
     try {
       fos = new FileOutputStream(string2);
       fis = new FileInputStream(string);
@@ -116,7 +115,7 @@ public class Record {
       int off = 0;
       int len = 0;
       while ((len = fis.read(b)) != -1) {
-        fos.write(b,off,len);
+        fos.write(b,off,len);        
       }
       fos.flush();
     } catch (IOException ioe) {
@@ -125,5 +124,5 @@ public class Record {
       fos.close();
       fis.close();
     }
-  }
+  } 
 }
