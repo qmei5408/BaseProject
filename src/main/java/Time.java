@@ -74,7 +74,7 @@ public class Time {
       Date date2 = datenow.parse(date);
       
       long day = (date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000); 
-      if (day <= 3) {
+      if (day <= 3 && day >= 0) {
         return true;
       }
       

@@ -13,7 +13,7 @@ public class Record {
   
   private String filename = "Homework.txt";
 
-  public void add(String name, String date, String note) throws IOException{
+  public boolean add(String name, String date, String note) throws IOException{
     FileWriter fw = new FileWriter(filename,true);
     
     fw.write(date + "\r\n");
@@ -24,10 +24,12 @@ public class Record {
     fw.flush();
     
     fw.close();
+    
+    return true;
   }
   
 
-  public void read(int input) throws IOException, ParseException {
+  public boolean read(int input) throws IOException, ParseException {
     FileReader fr = new FileReader(filename);
     BufferedReader br = new BufferedReader(fr);
     Time time = new Time();
@@ -53,10 +55,12 @@ public class Record {
     }
    
     fr.close();
+    
+    return true;
   }
   
 
-  public void del() throws IOException, ParseException {
+  public boolean del() throws IOException, ParseException {
     FileReader fr1 = new FileReader(filename);
     FileWriter fw1 = new FileWriter("test.txt");
     
@@ -69,7 +73,7 @@ public class Record {
     
     System.out.println("Input date(yyyy-MM-dd)");
     String date = scanner.nextLine();
-    
+
     boolean check = false;
     
     while (br1.ready()) {
@@ -91,21 +95,25 @@ public class Record {
       }
     }
     
+    boolean result = false;
+    
     if (check) {
+      result = true;
       copyFile("test.txt","Homework.txt");
-      System.out.println("Done delete");
     } else {
-      System.out.println("No this data");
+      result = false;
     }
     
     
     fw1.close();
     fr1.close();
     scanner.close();
+    
+    return result;
   }
   
 
-  public static void copyFile(String string, String string2) throws IOException {
+  public static boolean copyFile(String string, String string2) throws IOException {
     InputStream fis = null;
     OutputStream fos = null;    
     try {
@@ -124,5 +132,7 @@ public class Record {
       fos.close();
       fis.close();
     }
+    
+    return true;
   } 
 }
