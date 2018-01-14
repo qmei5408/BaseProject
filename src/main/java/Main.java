@@ -27,9 +27,14 @@ public class Main {
             case 4:
                 //other
                 break;
+            case 5:
+                System.out.println("Exiting Program");
+                break;
                 default:
+                    System.out.println("Input not recognized");
                     System.out.println("Exiting Program");
                     break;
+
         }
         input.close();
     }
