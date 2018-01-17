@@ -2,12 +2,15 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class ReminderData {
 	  String[] array = new String[100];
 	  private String filename = "RMData.txt";
 	  Scanner scanner = new Scanner(System.in);
 	  Calendar rightnow = Calendar.getInstance();
+	  DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
 	  
 	  public boolean add(String name, String date) throws IOException{ //add new schedule
 	    FileWriter fw = new FileWriter(filename,true);
@@ -107,11 +110,11 @@ public class ReminderData {
 	  }
 	  
 	  public boolean compareTime() throws IOException, ParseException{  //compare current time to the schedule
-		  String current = new String(rightnow.get(Calendar.YEAR)+"-"
-				  					+rightnow.get(Calendar.MONTH)+1+"-"
-				  					+rightnow.get(Calendar.DAY_OF_MONTH)+" "
-				  					+rightnow.get(Calendar.HOUR_OF_DAY)+":"
-				  					+rightnow.get(Calendar.MINUTE));
+		  String current = String.format("%04d-%02d-%02d %02d:%02d", rightnow.get(Calendar.YEAR)
+				  												   ,rightnow.get(Calendar.MONTH)+1
+				  												   ,rightnow.get(Calendar.DAY_OF_MONTH)
+				  												   ,rightnow.get(Calendar.HOUR_OF_DAY)
+				  												   ,rightnow.get(Calendar.MINUTE));
 		  System.out.println("Current Time: \n" + current);
 		  
 		    FileReader fr = new FileReader(filename);

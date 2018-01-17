@@ -38,6 +38,7 @@ public class Reminder {
 					System.out.println();
 					break;
 				case 5:
+					System.out.println("Exit Reminder!");
 					break;
 				default:
 					System.out.println("Wrong input!");
