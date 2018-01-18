@@ -40,9 +40,7 @@ public class Mainhw {
             } else {
               System.out.println("Time wrong, input again.");
             }
-          } catch (ParseException e) {
-            System.out.println("Time format wrong!!");
-          } catch (IOException e) {
+          } catch (IOException | ParseException e) {
             System.out.println("Time format wrong!!");
           }
         }
@@ -55,7 +53,7 @@ public class Mainhw {
           System.out.println("No this data");
         }
       } catch (IOException | ParseException e) {
-        System.out.println("No this file.");
+        System.out.println("Time format wrong!!");
       }
         break;
       case 3 :
@@ -65,13 +63,13 @@ public class Mainhw {
       try {
         record.read(input);
       } catch (IOException | ParseException e) {
-        System.out.println("No this file.");
+        System.out.println("Time format wrong!!");
       }
         break;
       default:
         break;
     }
-    scanner.close();
+    //scanner.close();
   }
 
 }
