@@ -9,7 +9,7 @@ public class ActivitiesTest {
         Database dat = new Database();
         int lineNum = dat.line();
         Activities act = new Activities("test");
-        act.add("test for adding", "2019.5.20 12:31");
+        act.add("test for adding", "2021.5.20 12:31");
         int newLineNum = dat.line();
         assertTrue(lineNum == newLineNum-2);
     }

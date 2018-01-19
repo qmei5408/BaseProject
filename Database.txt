@@ -1,24 +1,4 @@
 2017.12.25 at 9:30 AM
-0 Running
-0 2017.12.29 at 09:30 AM
-0 Math practice
-0 2017.12.29 09:50 AM
-0 ENglish test
-0 2017.12.31 at 12:30 AM
-0 Coding
-0 2017.12.30 '
-0 fix code
-0 2017.12.28 'at' 12:30 PM
-0 fix parse date
-0 2017.12.27 12:30 AM
-0 fix some stuff
-0 2017.12.28 04.14
-0 Get some new trousers
-0 2017.12.29 21:30
-0 date
-0 "2004.07.18 04:14"
-0 Something cool
-0 2018.1.25 22:00
 21 Go snowboarding
 21 2004.07.18 9:30
 23 Take over the world
@@ -65,3 +45,11 @@
 63 2019.5.20 12:31
 65 honey butter
 65 2018.6.20 06:22
+67 Do java demo
+67 2018.01.19 17:45
+69 Fix main problem
+69 2018.01.19 21:00
+51 sleep all day
+51 2018.02.23 08:50
+53 help old ladies
+53 2019.02.02 09:50

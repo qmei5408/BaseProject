@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int in=0;
-        while(in != 5) {
         System.out.println("Welcome to the Sugar City Calendar\n");
         System.out.println("1. HomeWork");
         System.out.println("2. Activities");
@@ -36,7 +35,6 @@ public class Main {
                     System.out.println("Input not recognized");
                     System.out.println("Exiting Program");
                     break;
-        }
         }
         input.close();
     }
