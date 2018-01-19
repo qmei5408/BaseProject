@@ -1,27 +1,28 @@
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+
 
 import java.io.IOException;
 import java.text.ParseException;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
 
-class RecordTest {
+public class RecordTest {
 
   @Test
-  void testAdd() throws IOException {
+  public void testAdd() throws IOException {
     Record tst = new Record();
     assertTrue(tst.add("Math","2018-01-20","Add"));
   }
 
   @Test
-  void testRead() throws IOException, ParseException {
+  public void testRead() throws IOException, ParseException {
     Record tst = new Record();
     assertTrue(tst.read(1));
   }
 
   @Test
-  void testDel() throws IOException, ParseException {
+  public void testDel() throws IOException, ParseException {
     Record tst = new Record();
     // input test case add
     assertTrue(tst.del());
@@ -29,7 +30,7 @@ class RecordTest {
   }
 
   @Test
-  void testCopyFile() throws IOException {
+  public void testCopyFile() throws IOException {
     assertTrue(Record.copyFile("123","123"));
   }
 

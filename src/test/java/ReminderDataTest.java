@@ -1,12 +1,12 @@
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.text.ParseException;
+import org.junit.Test;
+//import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.Test;
-
-class ReminderDataTest {
+public class ReminderDataTest {
 
 	void testAdd() throws IOException{
 		ReminderData test = new ReminderData();

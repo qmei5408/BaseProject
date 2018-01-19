@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
         System.out.println("1. HomeWork");
         System.out.println("2. Activities");
         System.out.println("3. Reminder");
-        System.out.println("4. Something else");
+        System.out.println("4. Homework Times");
         System.out.println("5. Exit Program");
         in = input.nextInt();
         switch (in){
@@ -26,7 +27,12 @@ public class Main {
                 rmenu.ReminderMenu();
                 break;
             case 4:
-                //other
+                TimeForHomework home = new TimeForHomework();
+                try {
+                    home.thMenu();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             case 5:
                 System.out.println("Exiting Program");
@@ -36,6 +42,6 @@ public class Main {
                     System.out.println("Exiting Program");
                     break;
         }
-        input.close();
+           input.close();
     }
 }
